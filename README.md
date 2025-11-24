@@ -81,6 +81,7 @@ isro-voyager/
 ### 1️⃣ Clone the repository
 
 git clone https://github.com/Yashada18/isro-voyager.git
+
 2️⃣ Navigate into the folder
 cd isro-voyager
 
