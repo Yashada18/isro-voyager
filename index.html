@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISRO Voyager</title>
+
+  <!-- Oswald (headings) + Inter (body) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">ISRO VOYAGER</a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="#satellites">Missions</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- MAIN SCENE -->
+  <main class="scene-wrapper">
+    <p class="tagline">
+      Discover India’s achievements beyond Earth
+    </p>
+
+    <section class="space-scene" id="satellites">
+      <!-- Moon / Chandrayaan -->
+      <a href="missions/chandrayaan.html" class="mission-link mission-moon">
+        <img src="assets/moon.png" alt="Moon" class="mission-body" />
+        <span class="mission-label">Chandrayaan</span>
+      </a>
+
+      <!-- Mars / Mangalyaan -->
+      <a href="missions/mangalyaan.html" class="mission-link mission-mars">
+        <img src="assets/mars.png" alt="Mars" class="mission-body" />
+        <span class="mission-label">Mangalyaan</span>
+      </a>
+
+      <!-- Satellites floating around the arc -->
+      <!-- COMMUNICATION -->
+      <button
+        class="satellite sat-comm"
+        data-category="communication"
+        aria-label="Communication satellites"
+      >
+        <img src="assets/sat-comm.png" alt="Communication Satellite" />
+        <span class="sat-label">Communication</span>
+      </button>
+
+      <!-- EARTH OBSERVATION -->
+      <button
+        class="satellite sat-earthobs"
+        data-category="earthObservation"
+        aria-label="Earth observation satellites"
+      >
+        <img src="assets/sat-earthobs.png" alt="Earth Observation Satellite" />
+        <span class="sat-label">Earth Observation</span>
+      </button>
+
+      <!-- SCIENTIFIC -->
+      <button
+        class="satellite sat-science"
+        data-category="science"
+        aria-label="Scientific spacecraft"
+      >
+        <img src="assets/sat-science.png" alt="Scientific Spacecraft" />
+        <span class="sat-label">Scientific</span>
+      </button>
+
+      <!-- NAVIGATION -->
+      <button
+        class="satellite sat-nav"
+        data-category="navigation"
+        aria-label="Navigation satellites"
+      >
+        <img src="assets/sat-nav.png" alt="Navigation Satellite" />
+        <span class="sat-label">Navigation</span>
+      </button>
+
+      <!-- EXPERIMENTAL -->
+      <button
+        class="satellite sat-experimental"
+        data-category="experimental"
+        aria-label="Experimental satellites"
+      >
+        <img src="assets/sat-experimental.png" alt="Experimental Satellite" />
+        <span class="sat-label">Experimental</span>
+      </button>
+
+      <!-- SMALL SATELLITES -->
+      <button
+        class="satellite sat-small"
+        data-category="small"
+        aria-label="Small satellites"
+      >
+        <img src="assets/sat-small.png" alt="Small Satellite" />
+        <span class="sat-label">Small Satellites</span>
+      </button>
+
+      <!-- Earth arc at bottom -->
+      <div class="earth-wrapper">
+        <img src="assets/earth.png" alt="Earth" class="earth-img" />
+      </div>
+
+      <!-- launch rocket in the middle (optional) -->
+      <div class="rocket-wrapper">
+        <img src="assets/rocket.png" alt="Launch vehicle" class="rocket-img" />
+      </div>
+    </section>
+
+    <!-- INFO CARD (category details) -->
+    <aside class="info-card" id="info-card">
+      <h2 class="info-title" id="info-title">Hover or click a satellite</h2>
+      <p class="info-text" id="info-text">
+        Explore ISRO’s satellite families – communication, earth observation,
+        navigation, scientific missions and more.
+      </p>
+      <p class="info-mission" id="info-mission"></p>
+    </aside>
+
+    <!-- ABOUT FOOTER SMALL -->
+    <section id="about" class="about">
+      <p>
+        ISRO Voyager is a learning-focused project that visualizes India’s
+        major space missions, satellites and launch vehicles in an interactive
+        way. Use this as an educational tool or portfolio piece — extend it
+        with timelines and orbital visualizers.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
