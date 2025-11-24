@@ -1,390 +1,181 @@
-/* ---------- RESET ---------- */
+/* ==== Global ==== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ---------- GLOBAL ---------- */
 body {
-  min-height: 100vh;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  color: #f7f7f7;
-  background: radial-gradient(circle at top, #171b3a 0%, #02030a 50%, #000 100%);
+  background: radial-gradient(circle at center, #0a0f2a, #000 70%);
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  color: white;
 }
 
-/* stars / pixels layer */
-body::before {
-  content: "";
+/* ==== Navbar ==== */
+.navbar {
   position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
-  background-size: 3px 3px;
-  opacity: 0.16;
-  z-index: -1;
-}
-
-/* ---------- NAVBAR ---------- */
-.nav {
-  position: fixed;
+  width: 100%;
   top: 0;
-  left: 0;
-  right: 0;
-  padding: 14px 80px;
+  padding: 25px 50px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  z-index: 20;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.9),
-    rgba(0, 0, 0, 0.4),
-    transparent
-  );
-}
-
-.nav-logo {
-  font-family: "Oswald", sans-serif;
-  font-weight: 500;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #f1f1f1;
-  font-size: 0.95rem;
-  position: relative;
-  font-weight: 400;
-}
-
-.nav-links a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 26px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 999px;
-}
-
-/* ---------- MAIN SCENE ---------- */
-.scene-wrapper {
-  padding-top: 70px; /* nav height */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  z-index: 100;
 }
 
-/* tagline under nav */
-.tagline {
-  margin-top: 20px;
-  font-size: 0.95rem;
-  color: #d5d9ff;
-  letter-spacing: 1px;
+.logo {
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
-/* space scene */
-.space-scene {
+.navbar a {
+  margin-left: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navbar a.active {
+  border-bottom: 2px solid white;
+}
+
+/* ==== Space Container ==== */
+.space-container {
   position: relative;
+  height: 100vh;
   width: 100%;
-  max-width: 1400px;
-  height: 70vh;
-  margin-top: 10px;
-  overflow: visible;
+  overflow: hidden;
 }
 
-/* ---------- MOON & MARS MISSIONS ---------- */
-.mission-link {
+/* ==== Earth Arc ==== */
+.earth-arc {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #f7f7f7;
-}
-
-.mission-body {
-  width: 160px;
-  height: auto;
-  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.3));
-}
-
-.mission-label {
-  margin-top: 8px;
-  font-family: "Oswald", sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-}
-
-.mission-moon {
-  left: 3%;
-  top: 30%;
-}
-
-.mission-mars {
-  right: 3%;
-  top: 30%;
-}
-
-/* ---------- EARTH ARC ---------- */
-.earth-wrapper {
-  position: absolute;
+  bottom: -50vh;
   left: 50%;
-  bottom: -42%;
   transform: translateX(-50%);
-  width: 140%;
+  width: 750px;
+  opacity: 0.9;
   pointer-events: none;
+  filter: drop-shadow(0 0 40px #4a9eff) drop-shadow(0 0 80px #1e5ba8) drop-shadow(0 0 120px #0a3a5a);
+  z-index: 2;
+}/* ==== Moon & Mars ==== */
+
+
+.planetmoon {
+  top: 50%;
+  left: 60%;
+  width: 350px;
+  min-width: 6px;
+  opacity: 1;
+  animation: floatMOON 5s ;
 }
 
-.earth-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 0 40px rgba(62, 132, 255, 0.7));
+.planetmars {
+  top: 22%;
+  right: 6%;
+  width: 14vw;
+  min-width: 110px;
+  opacity: 0;
 }
 
-/* rocket in middle */
-.rocket-wrapper {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-}
-
-.rocket-img {
-  height: 190px;
-  width: auto;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
-}
-
-/* ---------- SATELLITES ---------- */
+/* ==== Satellite Styles ==== */
 .satellite {
   position: absolute;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: float 4.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgba(117, 187, 255, 0.9));
+  text-align: center;
+  width: 12vw;
+  min-width: 100px;
+  animation: float 10s ease-in-out infinite;
 }
 
 .satellite img {
-  width: 110px;
-  height: auto;
+  width: 100%;
+  filter: drop-shadow(0 0 10px #58a6ff);
 }
 
-.satellite .sat-label {
-  margin-top: 6px;
-  font-size: 0.75rem;
-  color: #f7f7f7;
+.satellite p {
   font-family: "Oswald", sans-serif;
-  letter-spacing: 0.6px;
+  margin-top: 5px;
+  font-size: clamp(14px, 1vw, 20px);
 }
 
-/* satellite positions around the arc (adjust as you like) */
-.sat-comm {
-  left: 10%;
-  top: 55%;
-}
-
-.sat-earthobs {
-  left: 26%;
-  top: 42%;
-}
-
-.sat-science {
-  left: 45%;
-  top: 35%;
-}
-
-.sat-nav {
-  right: 28%;
-  top: 42%;
-}
-
-.sat-experimental {
-  right: 12%;
-  top: 55%;
-}
-
-.sat-small {
-  left: 60%;
-  top: 49%;
-}
-
-/* floating animation */
+/* Float animation */
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateX(-10px); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateX(10px); }
 }
 
-/* ---------- INFO CARD ---------- */
-.info-card {
-  margin-top: 18px;
-  max-width: 700px;
-  background: rgba(5, 8, 30, 0.88);
-  border-radius: 18px;
-  padding: 16px 20px;
-  border: 1px solid rgba(138, 162, 255, 0.7);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+@keyframes floatMOON {
+  0% { transform: translateX(-20px); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateX(20px); }
+}
+/* ==== Arc Positions for Satellites ==== */
+#sat-comm { top: 50%; left:5%;  }
+#sat-earthobs { top: 35%; left: 25%; }
+#sat-science { top: 30%; left: 45%; transform: translateX(-50%); }
+#sat-nav { top: 35%; left: 65%; }
+#sat-experimental { top: 50%; left: 85%; }
+#sat-small { 
+  top: 65%; 
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 18vw;
 }
 
-.info-title {
-  font-family: "Oswald", sans-serif;
-  font-size: 1rem;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-.info-text {
-  font-size: 0.9rem;
-  color: #d2d5ff;
-}
-
-.info-mission {
-  font-size: 0.85rem;
-  margin-top: 8px;
-  color: #ffc66d;
-}
-
-/* ---------- ABOUT ---------- */
-.about {
-  max-width: 800px;
-  margin: 26px auto 40px;
-  padding: 0 20px;
-  font-size: 0.9rem;
-  color: #c2c6ff;
-}
-
-/* ---------- GENERIC PAGE LAYOUT (missions & categories) ---------- */
-.page-wrapper {
-  padding-top: 80px;
-  max-width: 960px;
-  margin: 0 auto 40px;
-  padding-inline: 20px;
-}
-
-.page-heading {
-  font-family: "Oswald", sans-serif;
-  font-size: 2.2rem;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-.page-subtitle {
-  font-size: 0.95rem;
-  color: #d0d4ff;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: rgba(5, 8, 30, 0.9);
-  border-radius: 16px;
-  padding: 16px 18px;
-  border: 1px solid rgba(138, 162, 255, 0.6);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
-  margin-bottom: 16px;
-}
-
-.card h3 {
-  font-family: "Oswald", sans-serif;
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-}
-
-.card p {
-  font-size: 0.88rem;
-  color: #d5d8ff;
-}
-
-/* timeline style */
-.timeline-list {
-  list-style: none;
-  border-left: 2px solid rgba(120, 145, 255, 0.6);
-  padding-left: 16px;
-  margin-top: 10px;
-}
-
-.timeline-item {
-  margin-bottom: 14px;
-  position: relative;
-}
-
-.timeline-item::before {
-  content: "";
+/* ==== Pixelated Stars ==== */
+.stars {
   position: absolute;
-  left: -11px;
-  top: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  width: 4px;
+  height: 4px;
+  background: white;
+  opacity: 0.7;
+  z-index: 1;
 }
 
-.timeline-item h4 {
+/* ==== Marks and Mood Text ==== */
+.marks {
+  position: absolute;
   font-family: "Oswald", sans-serif;
-  font-size: 0.95rem;
-  margin-bottom: 2px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  opacity: 0.15;
+  z-index: 1;
+  letter-spacing: 3px;
 }
 
-.timeline-item p {
-  font-size: 0.85rem;
-  color: #cbd0ff;
+.marks.left {
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 900px) {
-  .nav {
-    padding: 10px 16px;
-  }
+.marks.right {
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
 
-  .nav-links {
-    gap: 14px;
-  }
+.mood {
+  position: absolute;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.8rem;
+  opacity: 0.12;
+  z-index: 1;
+}
 
-  .space-scene {
-    height: 65vh;
-  }
+.mood.left {
+  left: 3%;
+  bottom: 5%;
+}
 
-  .mission-body {
-    width: 110px;
-  }
-
-  .mission-label {
-    font-size: 1rem;
-  }
-
-  .satellite img {
-    width: 80px;
-  }
-
-  .earth-wrapper {
-    bottom: -35%;
-    width: 180%;
-  }
+.mood.right {
+  right: 3%;
+  bottom: 5%;
 }
