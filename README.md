@@ -74,6 +74,7 @@ isro-voyager/
     └── small-satellites.html
 
 
+
 ## 🛠 Setup Instructions
 
 ### 1️⃣ Clone the repository
@@ -95,8 +96,6 @@ Right-click → "Open with Live Server"
 The entire site runs directly in the browser — no backend required.
 
 ## 📸 Screenshots
-
-> Add your screenshots in a `/screenshots` folder.
 
 ### 🏠 Homepage  
 ![Homepage](screenshots/homepage.png)
