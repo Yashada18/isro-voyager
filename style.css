@@ -58,31 +58,45 @@ body {
   width: 750px;
   opacity: 0.9;
   pointer-events: none;
-  filter: drop-shadow(0 0 40px #4a9eff) drop-shadow(0 0 80px #1e5ba8) drop-shadow(0 0 120px #0a3a5a);
+  filter: drop-shadow(0 0 10px #4a9eff) drop-shadow(0 0 40px #1e5ba8) drop-shadow(0 0 80px #0a3a5a);
   z-index: 2;
-}/* ==== Moon & Mars ==== */
+}
+/* ==== Moon & Mars ==== */
 
 
-.planetmoon {
-  top: 50%;
-  left: 60%;
-  width: 350px;
-  min-width: 6px;
-  opacity: 1;
-  animation: floatMOON 5s ;
+
+@keyframes moonTravel {
+  0%   { transform: translateX(-5vw); }
+  100% { transform: translateX(120vw); }
 }
 
+.planetmoon {
+  position: absolute;
+  top: 12%;
+  left: -10vw;   
+  width: 20vw;
+  min-width: 140px;
+  animation: moonTravel 25s linear infinite; 
+  z-index: 4;
+}
+
+
+
 .planetmars {
-  top: 22%;
+  position: absolute;
+  z-index: 3;
+  top: 28%;
   right: 6%;
   width: 14vw;
   min-width: 110px;
-  opacity: 0;
+  animation: floatMars 20s ease-in-out infinite alternate;
 }
+
 
 /* ==== Satellite Styles ==== */
 .satellite {
   position: absolute;
+  z-index: 5;
   text-align: center;
   width: 12vw;
   min-width: 100px;
@@ -97,21 +111,23 @@ body {
 .satellite p {
   font-family: "Oswald", sans-serif;
   margin-top: 5px;
-  font-size: clamp(14px, 1vw, 20px);
+  font-size: clamp(14px, 1vw, 30px);
+  color: #ffffff;
 }
 
 /* Float animation */
 @keyframes float {
-  0% { transform: translateX(-10px); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateX(10px); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
 }
 
-@keyframes floatMOON {
-  0% { transform: translateX(-20px); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateX(20px); }
+
+@keyframes floatMars {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(40px); }
 }
+
 /* ==== Arc Positions for Satellites ==== */
 #sat-comm { top: 50%; left:5%;  }
 #sat-earthobs { top: 35%; left: 25%; }
@@ -135,47 +151,6 @@ body {
   z-index: 1;
 }
 
-/* ==== Marks and Mood Text ==== */
-.marks {
-  position: absolute;
-  font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  opacity: 0.15;
-  z-index: 1;
-  letter-spacing: 3px;
-}
 
-.marks.left {
-  left: 2%;
-  top: 50%;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
 
-.marks.right {
-  right: 2%;
-  top: 50%;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
 
-.mood {
-  position: absolute;
-  font-family: "Oswald", sans-serif;
-  font-size: 1.8rem;
-  opacity: 0.12;
-  z-index: 1;
-}
-
-.mood.left {
-  left: 3%;
-  bottom: 5%;
-}
-
-.mood.right {
-  right: 3%;
-  bottom: 5%;
-}
