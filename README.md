@@ -42,6 +42,7 @@ https://Yashada18.github.io/isro-voyager/
 </p>
 
 ## 📁 Folder Structure
+```
 isro-voyager/
 │
 ├── index.html
@@ -74,7 +75,7 @@ isro-voyager/
     └── small-satellites.html
 
 
-
+```
 ## 🛠 Setup Instructions
 
 ### 1️⃣ Clone the repository
