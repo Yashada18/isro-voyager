@@ -1,4 +1,6 @@
-/* ==== Global ==== */
+/* ----------------------------------------------------------
+   GLOBAL
+---------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -6,18 +8,20 @@
 }
 
 body {
-  background: radial-gradient(circle at center, #0a0f2a, #000 70%);
+  background: radial-gradient(circle at center, #0a0f2c, #000 70%);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   color: white;
 }
 
-/* ==== Navbar ==== */
+/* ----------------------------------------------------------
+   NAVBAR
+---------------------------------------------------------- */
 .navbar {
   position: fixed;
-  width: 100%;
   top: 0;
-  padding: 25px 50px;
+  width: 100%;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,22 +30,24 @@ body {
 
 .logo {
   font-family: "Oswald", sans-serif;
-  font-size: 2rem;
+  font-size: 1.9rem;
   letter-spacing: 2px;
 }
 
 .navbar a {
-  margin-left: 30px;
+  margin-left: 25px;
   color: white;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .navbar a.active {
   border-bottom: 2px solid white;
 }
 
-/* ==== Space Container ==== */
+/* ----------------------------------------------------------
+   SPACE CONTAINER
+---------------------------------------------------------- */
 .space-container {
   position: relative;
   height: 100vh;
@@ -49,108 +55,222 @@ body {
   overflow: hidden;
 }
 
-/* ==== Earth Arc ==== */
-.earth-arc {
-  position: absolute;
-  bottom: -50vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 750px;
-  opacity: 0.9;
-  pointer-events: none;
-  filter: drop-shadow(0 0 10px #4a9eff) drop-shadow(0 0 40px #1e5ba8) drop-shadow(0 0 80px #0a3a5a);
-  z-index: 2;
-}
-/* ==== Moon & Mars ==== */
+/* ----------------------------------------------------------
+   EARTH (BOTTOM ARC)
+---------------------------------------------------------- */
+.earth-arc { position: absolute; 
+             bottom: -1100px; left: 50%; 
+             transform: translateX(-50%); 
+             width: 1800px; opacity: 1; 
+             pointer-events: none; 
+             filter: drop-shadow(0 0 10px #4a9eff) 
+             drop-shadow(0 0 40px #1e5ba8) 
+             drop-shadow(0 0 80px #0a3a5a);
+              z-index: 2; }
 
-
-
+/* ----------------------------------------------------------
+   MOON — Full-screen scroll + text
+---------------------------------------------------------- */
 @keyframes moonTravel {
-  0%   { transform: translateX(-5vw); }
-  100% { transform: translateX(120vw); }
+  0%   { transform: translateX(5vw); }
+  100% { transform: translateX(100vw); }
 }
 
-.planetmoon {
+.moon {
   position: absolute;
-  top: 12%;
-  left: -10vw;   
-  width: 20vw;
-  min-width: 140px;
-  animation: moonTravel 25s linear infinite; 
+  top: 5%;
+  left: 0;
+  width: 300px;
+  min-width: 130px;
+  animation: moonTravel 40s linear infinite;
   z-index: 4;
 }
 
+.planetmoon {
+  width: 100%;
+  filter: drop-shadow(0 0 20px #516885);
+}
 
+/* Moon Text */
+.moon .text-block {
+  position: absolute;
+  bottom: 140px;
+  left: 55%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 220px;
+}
+
+
+
+.moon .text-block p {
+  font-size: 0.8rem;
+  margin-top: 3px;
+}
+
+.moon .text-block button {
+  margin-top: 8px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #4a9eff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.moon .text-block button:hover {
+  background: #0e2846;
+}
+
+/* ----------------------------------------------------------
+   MARS — Floating animation + text
+---------------------------------------------------------- */
+@keyframes floatMars {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-20px); }
+}
+
+.mars {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  width: 16vw;
+  min-width: 130px;
+  z-index: 3;
+}
 
 .planetmars {
-  position: absolute;
-  z-index: 3;
-  top: 28%;
-  right: 6%;
-  width: 14vw;
-  min-width: 110px;
-  animation: floatMars 20s ease-in-out infinite alternate;
-}
-
-
-/* ==== Satellite Styles ==== */
-.satellite {
-  position: absolute;
-  z-index: 5;
-  text-align: center;
-  width: 12vw;
-  min-width: 100px;
-  animation: float 10s ease-in-out infinite;
-}
-
-.satellite img {
   width: 100%;
-  filter: drop-shadow(0 0 10px #58a6ff);
+  animation: floatMars 10s ease-in-out infinite alternate;
 }
 
-.satellite p {
-  font-family: "Oswald", sans-serif;
-  margin-top: 5px;
-  font-size: clamp(14px, 1vw, 30px);
-  color: #ffffff;
+.text-block-mars {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+  width: 200px;
 }
 
-/* Float animation */
+
+.text-block-mars p {
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.text-block-mars button {
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: #a12318;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.text-block-mars button:hover {
+  background: #470a04;
+}
+
+/* ----------------------------------------------------------
+   SATELLITE FLOATING
+---------------------------------------------------------- */
 @keyframes float {
   0%   { transform: translateY(0px); }
   50%  { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
-
-@keyframes floatMars {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(40px); }
+.satellite {
+  position: absolute;
+  top: 10%;
+  z-index: 5;
+  text-align: center;
+  width: 150px;
+  min-width: 90px;
+  animation: float 10s ease-in-out infinite;
 }
 
-/* ==== Arc Positions for Satellites ==== */
-#sat-comm { top: 50%; left:5%;  }
-#sat-earthobs { top: 35%; left: 25%; }
-#sat-science { top: 30%; left: 45%; transform: translateX(-50%); }
-#sat-nav { top: 35%; left: 65%; }
-#sat-experimental { top: 50%; left: 85%; }
-#sat-small { 
-  top: 65%; 
-  left: 50%; 
-  transform: translateX(-50%);
-  width: 18vw;
+.satellite img {
+  width: 100%;
+  filter: drop-shadow(0 0 10px #4e76a4);
 }
 
-/* ==== Pixelated Stars ==== */
+.satellite p {
+  font-family: "Oswald";
+  font-size: clamp(14px, 1vw, 1.4rem);
+  margin-top: 5px;
+}
+
+/* Satellite Arc Positions */
+#sat-comm { top: 75%; left: 10%; }
+#sat-earthobs { top: 55%; left: 22%; }
+#sat-science { top: 45%; left: 55%; transform: translateX(-10%); }
+#sat-nav { top: 60%; left: 68%; }
+#sat-experimental { top: 75%; left: 80%; width:100px}
+#sat-small { top: 45%; left: 40%; transform: translateX(-50%); width: 100px; }
+
+/* ----------------------------------------------------------
+   STARS
+---------------------------------------------------------- */
 .stars {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: white;
+  width: 3px;
+  height: 3px;
+  background: #e7d1f2;
   opacity: 0.7;
   z-index: 1;
 }
 
+/* ----------------------------------------------------------
+   ★ MOBILE RESPONSIVENESS
+---------------------------------------------------------- */
+
+/* Phones < 600px */
+@media (max-width: 600px) {
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar a {
+    margin-left: 15px;
+    font-size: 0.9rem;
+  }
+
+  .moon {
+    top: 18%;
+    width: 32vw;
+  }
+
+  .mars {
+    top: 40%;
+    width: 30vw;
+    right: 2%;
+  }
+
+  /* Satellites repositioned for mobile */
+  #sat-comm { top: 70%; left: 3%; }
+  #sat-earthobs { top: 48%; left: 10%; }
+  #sat-science { top: 20%; left: 50%; }
+  #sat-nav { top: 48%; left: 70%; }
+  #sat-experimental { top: 70%; left: 92%; }
+  #sat-small { top: 78%; width: 30vw; }
+}
+
+/* Tablets < 900px */
+@media (max-width: 900px) {
+  .moon { width: 26vw; }
+  .mars { width: 24vw; }
+  #sat-small { width: 24vw; }
+}
 
 
 

@@ -1,7 +1,7 @@
 // Generate pixelated stars
 function generateStars() {
   const starsContainer = document.getElementById("stars-container");
-  const starCount = 80;
+  const starCount = 100;
   
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement("div");

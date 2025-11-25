@@ -22,57 +22,72 @@
     </nav>
   </header>
 
-  <!-- SPACE WRAPPER -->
+  <!-- MAIN SPACE SCENE -->
   <div class="space-container">
 
-    <!-- Pixelated Stars (JS Generated) -->
+    <!-- Stars  -->
     <div id="stars-container"></div>
 
-    
-    <!-- Moon -->
-    <img src="assets/moon.png" class="planetmoon" alt="Moon">
+    <!--  MOON + TEXT  -->
+    <div class="moon">
+      <img src="assets/moon.png" class="planetmoon" alt="Moon" />
 
-    <!-- Mars -->
-    <img src="assets/mars.png" class="planetmars" alt="Mars">
+      <div class="text-block">
+        <p>India’s Moon Mission</p>
+        <button onclick="window.location.href='missions/chandrayaan.html'">
+          Chandrayaan
+        </button>
+      </div>
+    </div>
 
-    <!-- Earth (Big Arc Bottom) -->
-    <img src="assets/earth.png" class="earth-arc" alt="Earth">
+    <!-- MARS + TEXT  -->
+    <div class="mars">
+      <img src="assets/mars.png" class="planetmars" alt="Mars" />
 
-    <!-- SATELLITES (RESPONSIVE ARC POSITIONS) -->
-    <div class="satellite" id="sat-comm">
+      <div class="text-block-mars">
+        <p>India’s Mars Orbiter Mission</p>
+        <button onclick="window.location.href='missions/mangalyaan.html'">
+          Mangalyaan
+        </button>
+      </div>
+    </div>
+
+    <!-- EARTH ARC -->
+    <img src="assets/earth.png" class="earth-arc" alt="Earth" />
+
+    <!-- SATELLITES -->
+    <div class="satellite" id="sat-comm" onclick="window.location.href='categories/communication.html'">
       <img src="assets/sat-comm.png" alt="">
-      <p>Communication</p>
+      <p onclick="window.location.href='categories/communication.html'">Communication Satellites</p>
     </div>
 
-    <div class="satellite" id="sat-earthobs">
+    <div class="satellite" id="sat-earthobs" onclick="window.location.href='categories/earth-observation.html'">
       <img src="assets/sat-earthobs.png" alt="">
-      <p>Earth Observation</p>
+      <p onclick="window.location.href='categories/earth-observation.html'">Earth Observation Satellites</p>
     </div>
 
-    <div class="satellite" id="sat-science">
+    <div class="satellite" id="sat-science" onclick="window.location.href='categories/scientific.html'">
       <img src="assets/sat-science.png" alt="">
-      <p>Scientific</p>
+      <p onclick="window.location.href='categories/scientific.html'">Scientific Satellites</p>
     </div>
 
-    <div class="satellite" id="sat-nav">
+    <div class="satellite" id="sat-nav" onclick="window.location.href='categories/navigation.html'">
       <img src="assets/sat-nav.png" alt="">
-      <p>Navigation</p>
+      <p onclick="window.location.href='categories/navigation.html'">Navigation Satellites</p>
     </div>
 
-    <div class="satellite" id="sat-experimental">
+    <div class="satellite" id="sat-experimental" onclick="window.location.href='categories/experimental.html'">
       <img src="assets/sat-experimental.png" alt="">
-      <p>Experimental</p>
+      <p onclick="window.location.href='categories/experimental.html'">Experimental Satellites</p>
     </div>
 
-    <div class="satellite" id="sat-small">
+    <div class="satellite" id="sat-small" onclick="window.location.href='categories/small-satellites.html'">
       <img src="assets/sat-small.png" alt="">
-      <p>Small Satellites</p>
+      <p onclick="window.location.href='categories/small-satellites.html'">Small Satellites</p>
     </div>
 
   </div>
 
-  <!-- JS -->
   <script src="script.js"></script>
-
 </body>
 </html>
