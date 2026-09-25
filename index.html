@@ -13,14 +13,88 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">ISRO VOYAGER</div>
-    <nav>
-      <a href="#" class="active">Home</a>
-      <a href="missions/chandrayaan.html">Missions</a>
-      <a href="#about">About</a>
+  <header class="nav">
+
+    <div class="nav-left">
+        <a href="./index.html" class="nav-logo">
+            ISRO VOYAGER
+        </a>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="./index.html" class="active">
+            Home
+        </a>
+
+        <div class="nav-dropdown">
+
+
+
+    <a href="#" class="dropdown-trigger">
+        Satellites <span>⌄</span>
+    </a>
+
+    <div class="dropdown-menu">
+
+        <a href="./categories/communication.html">
+            Communication
+        </a>
+
+        <a href="./categories/earth-observation.html">
+            Earth Observation
+        </a>
+
+        <a href="./categories/navigation.html">
+            Navigation
+        </a>
+
+        <a href="./categories/scientific.html">
+            Scientific
+        </a>
+
+        <a href="./categories/experimental.html">
+            Experimental
+        </a>
+
+        <a href="./categories/small-satellites.html">
+            Small Satellites
+        </a>
+
+    </div>
+
+</div>
+        </div>
+
+        <!-- Missions Dropdown -->
+        <div class="nav-dropdown">
+
+            <a href="#" class="dropdown-trigger">
+                Missions <span>▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+
+                <a href="../missions/chandrayaan.html">
+                    Chandrayaan
+                </a>
+
+                <a href="../missions/mangalyaan.html">
+                    Mangalyaan
+                </a>
+
+                <a href="../missions/aditya.html">
+                    Aditya-L1
+                </a>
+
+            </div>
+
+        </div>
+
+
     </nav>
-  </header>
+
+</header>
 
   <!-- MAIN SPACE SCENE -->
   <div class="space-container">

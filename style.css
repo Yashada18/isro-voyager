@@ -1,276 +1,1030 @@
 /* ----------------------------------------------------------
    GLOBAL
 ---------------------------------------------------------- */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at center, #0a0f2c, #000 70%);
-  font-family: "Inter", sans-serif;
-  overflow-x: hidden;
-  color: white;
+    background:
+        radial-gradient(circle at 50% 35%, #10183d 0%, #070b20 35%, #000 75%);
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+    color: white;
 }
+
 
 /* ----------------------------------------------------------
-   NAVBAR
+   HOMEPAGE NAVBAR
 ---------------------------------------------------------- */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 20;
+
+    width: 100%;
+    padding: 24px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(4, 7, 18, 0.55);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
-.logo {
-  font-family: "Oswald", sans-serif;
-  font-size: 1.9rem;
-  letter-spacing: 2px;
+.nav-logo {
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
 }
 
-.navbar a {
-  margin-left: 25px;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
+.nav-logo:hover {
+    color: #8dbdff;
 }
 
-.navbar a.active {
-  border-bottom: 2px solid white;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
+
+.nav-links a {
+    position: relative;
+
+    color: #8c94a8;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #fff;
+}
+
+.nav-links a:hover {
+    transform: translateY(-1px);
+}
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 100%;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #65a9ff;
+
+    box-shadow:
+        0 0 8px rgba(101, 169, 255, 0.7);
+}
+
+
+/* ----------------------------------------------------------
+   SATELLITE DROPDOWN
+---------------------------------------------------------- */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-trigger span {
+    font-size: 10px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* Hidden menu */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 18px);
+    left: 50%;
+
+    transform: translateX(-50%) translateY(8px);
+
+    width: 220px;
+
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    background: rgba(8, 12, 25, 0.96);
+
+    border: 1px solid rgba(130, 170, 230, 0.16);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(40, 90, 180, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+/*
+   Small invisible bridge between
+   navbar and dropdown so hover
+   doesn't disappear.
+*/
+
+.dropdown-menu::before {
+    content: "";
+
+    position: absolute;
+
+    top: -18px;
+    left: 0;
+
+    width: 100%;
+    height: 18px;
+}
+
+
+/* Show dropdown */
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* Dropdown links */
+
+.dropdown-menu a {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border-radius: 7px;
+
+    color: #858da0;
+
+    font-size: 11px;
+    letter-spacing: 0.5px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.dropdown-menu a:hover {
+    color: #fff;
+
+    padding-left: 17px;
+
+    background: rgba(90, 150, 255, 0.09);
+}
+
+
+/*
+   Prevent active underline
+   from appearing on dropdown items.
+*/
+
+.dropdown-menu a::after {
+    display: none !important;
+}
+
+
+/* Rotate arrow */
+
+.nav-dropdown:hover .dropdown-trigger span {
+    transform: rotate(180deg);
+
+    color: #65a9ff;
+}
+
 
 /* ----------------------------------------------------------
    SPACE CONTAINER
 ---------------------------------------------------------- */
+
 .space-container {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+    position: relative;
+
+    height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+
+    isolation: isolate;
 }
 
+
 /* ----------------------------------------------------------
-   EARTH (BOTTOM ARC)
+   SUBTLE SPACE GLOW
 ---------------------------------------------------------- */
-.earth-arc { position: absolute; 
-             bottom: -1100px; left: 50%; 
-             transform: translateX(-50%); 
-             width: 1800px; opacity: 1; 
-             pointer-events: none; 
-             filter: drop-shadow(0 0 10px #4a9eff) 
-             drop-shadow(0 0 40px #1e5ba8) 
-             drop-shadow(0 0 80px #0a3a5a);
-              z-index: 2; }
+
+.space-container::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    top: 5%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(65, 110, 210, 0.09),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* ----------------------------------------------------------
+   EARTH — BOTTOM ARC
+---------------------------------------------------------- */
+
+.earth-arc {
+    position: absolute;
+
+    bottom: -1100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 1800px;
+
+    opacity: 1;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 10px #4a9eff)
+        drop-shadow(0 0 40px #1e5ba8)
+        drop-shadow(0 0 80px #0a3a5a);
+
+    z-index: 2;
+}
+
 
 /* ----------------------------------------------------------
    MOON — Full-screen scroll + text
 ---------------------------------------------------------- */
+
 @keyframes moonTravel {
-  0%   { transform: translateX(5vw); }
-  100% { transform: translateX(100vw); }
+
+    0% {
+        transform: translateX(5vw);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
 }
 
 .moon {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  width: 300px;
-  min-width: 130px;
-  animation: moonTravel 40s linear infinite;
-  z-index: 4;
+    position: absolute;
+
+    top: 5%;
+    left: 0;
+
+    width: 300px;
+    min-width: 130px;
+
+    animation:
+        moonTravel 40s linear infinite;
+
+    z-index: 4;
+
+    filter:
+        drop-shadow(0 0 12px rgba(100, 140, 190, 0.35));
 }
 
 .planetmoon {
-  width: 100%;
-  filter: drop-shadow(0 0 20px #516885);
+    width: 100%;
+
+    filter:
+        drop-shadow(0 0 20px #516885);
 }
+
 
 /* Moon Text */
+
 .moon .text-block {
-  position: absolute;
-  bottom: 140px;
-  left: 55%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 220px;
+    position: absolute;
+
+    bottom: 140px;
+    left: 55%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    width: 220px;
+
+    padding: 10px;
 }
 
-
-
 .moon .text-block p {
-  font-size: 0.8rem;
-  margin-top: 3px;
+    font-size: 0.8rem;
+
+    margin-top: 3px;
+
+    color: #070c15;
 }
 
 .moon .text-block button {
-  margin-top: 8px;
-  padding: 6px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #4a9eff;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-top: 8px;
+
+    padding: 7px 15px;
+
+    border: 1px solid rgba(120, 180, 255, 0.35);
+
+    border-radius: 999px;
+
+    background: rgba(74, 158, 255, 0.16);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .moon .text-block button:hover {
-  background: #0e2846;
+    background: #4a9eff;
+
+    border-color: #4a9eff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(74, 158, 255, 0.35);
 }
+
 
 /* ----------------------------------------------------------
    MARS — Floating animation + text
 ---------------------------------------------------------- */
+
 @keyframes floatMars {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-20px); }
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
 }
 
 .mars {
-  position: absolute;
-  top: 25%;
-  right: 5%;
-  width: 16vw;
-  min-width: 130px;
-  z-index: 3;
+    position: absolute;
+
+    top: 25%;
+    right: 5%;
+
+    width: 16vw;
+    min-width: 130px;
+
+    z-index: 3;
 }
 
 .planetmars {
-  width: 100%;
-  animation: floatMars 10s ease-in-out infinite alternate;
+    width: 100%;
+
+    animation:
+        floatMars 10s ease-in-out infinite alternate;
+
+    filter:
+        drop-shadow(0 0 18px rgba(190, 65, 45, 0.45));
 }
 
 .text-block-mars {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 5;
-  width: 200px;
+    position: absolute;
+
+    top: -10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 5;
+
+    width: 200px;
 }
 
-
 .text-block-mars p {
-  font-size: 0.8rem;
-  margin-top: 4px;
+    font-size: 0.8rem;
+
+    margin-top: 4px;
+
+    color: #e4c8c4;
 }
 
 .text-block-mars button {
-  margin-top: 8px;
-  padding: 6px 14px;
-  background: #a12318;
-  color: white;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
+    margin-top: 8px;
+
+    padding: 7px 15px;
+
+    background: rgba(161, 35, 24, 0.2);
+
+    color: white;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(220, 80, 60, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
 }
 
 .text-block-mars button:hover {
-  background: #470a04;
+    background: #a12318;
+
+    border-color: #a12318;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(161, 35, 24, 0.35);
 }
+
 
 /* ----------------------------------------------------------
    SATELLITE FLOATING
 ---------------------------------------------------------- */
+
 @keyframes float {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .satellite {
-  position: absolute;
-  top: 10%;
-  z-index: 5;
-  text-align: center;
-  width: 150px;
-  min-width: 90px;
-  animation: float 10s ease-in-out infinite;
+    position: absolute;
+
+    top: 10%;
+
+    z-index: 5;
+
+    text-align: center;
+
+    width: 150px;
+    min-width: 90px;
+
+    animation:
+        float 10s ease-in-out infinite;
 }
 
 .satellite img {
-  width: 100%;
-  filter: drop-shadow(0 0 10px #4e76a4);
+    width: 100%;
+
+    filter:
+        drop-shadow(0 0 8px rgba(78, 118, 164, 0.7));
+
+    transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+}
+
+.satellite:hover img {
+    transform: scale(1.08);
+
+    filter:
+        drop-shadow(0 0 12px rgba(100, 170, 255, 0.85))
+        drop-shadow(0 0 25px rgba(70, 130, 220, 0.35));
 }
 
 .satellite p {
-  font-family: "Oswald";
-  font-size: clamp(14px, 1vw, 1.4rem);
-  margin-top: 5px;
+    font-family: "Oswald", sans-serif;
+
+    font-size: clamp(14px, 1vw, 1.4rem);
+
+    margin-top: 5px;
+
+    color: #dbe5f5;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 12px rgba(100, 160, 255, 0.25);
 }
 
-/* Satellite Arc Positions */
-#sat-comm { top: 75%; left: 10%; }
-#sat-earthobs { top: 55%; left: 22%; }
-#sat-science { top: 45%; left: 55%; transform: translateX(-10%); }
-#sat-nav { top: 60%; left: 68%; }
-#sat-experimental { top: 75%; left: 80%; width:100px}
-#sat-small { top: 45%; left: 40%; transform: translateX(-50%); width: 100px; }
+
+/* ----------------------------------------------------------
+   SATELLITE ARC POSITIONS
+   ORIGINAL POSITIONS PRESERVED
+---------------------------------------------------------- */
+
+#sat-comm {
+    top: 75%;
+    left: 10%;
+}
+
+#sat-earthobs {
+    top: 55%;
+    left: 22%;
+}
+
+#sat-science {
+    top: 45%;
+    left: 55%;
+
+    transform: translateX(-10%);
+}
+
+#sat-nav {
+    top: 60%;
+    left: 68%;
+}
+
+#sat-experimental {
+    top: 75%;
+    left: 80%;
+
+    width: 100px;
+}
+
+#sat-small {
+    top: 45%;
+    left: 40%;
+
+    transform: translateX(-50%);
+
+    width: 100px;
+}
+
+
+/* ----------------------------------------------------------
+   SATELLITE HOVER LABEL
+---------------------------------------------------------- */
+
+.satellite::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -10px;
+
+    transform: translateX(-50%);
+
+    width: 35px;
+    height: 1px;
+
+    background: rgba(100, 170, 255, 0.35);
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.satellite:hover::after {
+    width: 70px;
+
+    background: #65a9ff;
+
+    box-shadow:
+        0 0 10px rgba(101, 169, 255, 0.6);
+}
+
 
 /* ----------------------------------------------------------
    STARS
 ---------------------------------------------------------- */
+
 .stars {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: #e7d1f2;
-  opacity: 0.7;
-  z-index: 1;
-}
+    position: absolute;
 
-/* ----------------------------------------------------------
-   ★ MOBILE RESPONSIVENESS
----------------------------------------------------------- */
+    width: 3px;
+    height: 3px;
 
-/* Phones < 600px */
-@media (max-width: 600px) {
+    background: #e7d1f2;
 
-  .logo {
-    font-size: 1.4rem;
-  }
+    opacity: 0.7;
 
-  .navbar {
-    padding: 15px 20px;
-  }
+    z-index: 1;
 
-  .navbar a {
-    margin-left: 15px;
-    font-size: 0.9rem;
-  }
+    border-radius: 50%;
 
-  .moon {
-    top: 18%;
-    width: 32vw;
-  }
-
-  .mars {
-    top: 40%;
-    width: 30vw;
-    right: 2%;
-  }
-
-  /* Satellites repositioned for mobile */
-  #sat-comm { top: 70%; left: 3%; }
-  #sat-earthobs { top: 48%; left: 10%; }
-  #sat-science { top: 20%; left: 50%; }
-  #sat-nav { top: 48%; left: 70%; }
-  #sat-experimental { top: 70%; left: 92%; }
-  #sat-small { top: 78%; width: 30vw; }
-}
-
-/* Tablets < 900px */
-@media (max-width: 900px) {
-  .moon { width: 26vw; }
-  .mars { width: 24vw; }
-  #sat-small { width: 24vw; }
+    box-shadow:
+        0 0 5px rgba(220, 220, 255, 0.4);
 }
 
 
+/* =========================================================
+   MOBILE — SPACE JOURNEY
+   Moon → Mars → Satellites → Earth
+   ========================================================= */
 
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Long vertical mobile scene */
+    .space-container {
+        position: relative;
+        width: 100%;
+        height: 1850px;
+        min-height: 1850px;
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        padding: 14px 12px;
+
+        z-index: 100;
+    }
+
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .nav-logo {
+        font-size: 15px;
+    }
+
+    .dropdown-menu {
+        width: 190px;
+    }
+
+
+    /* =====================================================
+       MOON
+       SAME ORIGINAL SIZE + SAME ORIGINAL ANIMATION
+       ===================================================== */
+
+    .moon {
+        position: absolute !important;
+
+        /*
+         * Original width = 300px
+         * Keep it.
+         */
+        width: 300px !important;
+        min-width: 130px;
+
+        /*
+         * Move slightly higher on mobile.
+         */
+        top: 3% !important;
+
+        left: 0;
+
+        /*
+         * KEEP ORIGINAL ANIMATION
+         */
+        animation:
+            moonTravel 40s linear infinite !important;
+
+        z-index: 4;
+    }
+
+    .planetmoon {
+        width: 100%;
+    }
+
+
+    /* =====================================================
+       MOON TEXT
+       ===================================================== */
+
+    .moon .text-block {
+        width: 200px;
+
+        /*
+         * Keep text attached to the Moon.
+         */
+        bottom: 110px;
+        left: 55%;
+    }
+
+
+    /* =====================================================
+       MARS
+       ===================================================== */
+
+    .mars {
+        position: absolute !important;
+
+        /*
+         * Put Mars below the Moon.
+         */
+        top: 27% !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        transform: translateX(-50%) !important;
+
+        width: 115px !important;
+
+        z-index: 6;
+    }
+
+    /*
+     * KEEP ORIGINAL Mars animation.
+     * The animation belongs to .planetmars
+     * in your original CSS.
+     */
+
+    .planetmars {
+        width: 100%;
+    }
+
+    .text-block-mars {
+        width: 190px;
+
+        top: -5px;
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    /* =====================================================
+       SATELLITES
+       ONE STRAIGHT VERTICAL LINE
+       ===================================================== */
+
+    #sat-comm,
+    #sat-earthobs,
+    #sat-science,
+    #sat-nav,
+    #sat-experimental,
+    #sat-small {
+
+        position: absolute !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        transform: translateX(-50%) !important;
+
+        width: 95px !important;
+
+        z-index: 10;
+
+        /*
+         * KEEP ORIGINAL float animation
+         */
+        animation:
+            float 10s ease-in-out infinite !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 01
+       ----------------------------------------------------- */
+
+    #sat-comm {
+        top: 43% !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 02
+       ----------------------------------------------------- */
+
+    #sat-earthobs {
+        top: 54% !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 03
+       ----------------------------------------------------- */
+
+    #sat-science {
+        top: 65% !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 04
+       ----------------------------------------------------- */
+
+    #sat-nav {
+        top: 76% !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 05
+       ----------------------------------------------------- */
+
+    #sat-experimental {
+        top: 87% !important;
+
+        width: 80px !important;
+    }
+
+
+    /* -----------------------------------------------------
+       Satellite 06
+       ----------------------------------------------------- */
+
+    #sat-small {
+        top: 98% !important;
+
+        width: 80px !important;
+    }
+
+
+    /* =====================================================
+       EARTH
+       Your actual class is .earth-arc
+       ===================================================== */
+
+    .earth-arc {
+        position: absolute !important;
+
+        left: 50% !important;
+
+        /*
+         * Earth comes after the satellites.
+         */
+        bottom: -650px !important;
+
+        transform: translateX(-50%) !important;
+
+        width: 1000px !important;
+
+        z-index: 2;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .space-container {
+        height: 1800px;
+        min-height: 1800px;
+    }
+
+
+    /* Moon */
+    .moon {
+        width: 300px !important;
+        top: 1% !important;
+
+        /*
+         * SAME animation
+         */
+        animation:
+            moonTravel 40s linear infinite !important;
+    }
+
+
+    /* Mars */
+    .mars {
+        top: 25% !important;
+        width: 100px !important;
+    }
+
+
+    /* Satellites */
+
+    #sat-comm {
+        top: 40% !important;
+        width: 85px !important;
+    }
+
+    #sat-earthobs {
+        top: 51% !important;
+        width: 85px !important;
+    }
+
+    #sat-science {
+        top: 62% !important;
+        width: 85px !important;
+    }
+
+    #sat-nav {
+        top: 73% !important;
+        width: 85px !important;
+    }
+
+    #sat-experimental {
+        top: 84% !important;
+        width: 75px !important;
+    }
+
+    #sat-small {
+        top: 95% !important;
+        width: 75px !important;
+    }
+
+
+    /* Earth */
+
+    .earth-arc {
+        width: 850px !important;
+        bottom: -550px !important;
+    }
+}
