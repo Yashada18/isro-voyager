@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/missions/chandrayaan.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/missions/mangalyaan.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/missions/aditya.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/communication.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/earth-observation.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/navigation.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/scientific.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/experimental.html</loc>
+    </url>
+
+    <url>
+        <loc>https://isro-voyager.vercel.app/categories/small-satellites.html</loc>
+    </url>
+
+</urlset>
