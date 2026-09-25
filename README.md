@@ -14,11 +14,8 @@ The project is designed as both an **educational resource** and a **portfolio-qu
 
 ## 🚀 Live Demo
 
-### 🌐 GitHub Pages  
-https://Yashada18.github.io/isro-voyager/
-
 ### ▲ Vercel Deployment  
-*(Coming soon — will be added after deployment)*  
+*(https://isro-voyager.vercel.app/)*  
 
 ## 🎖️ Badges
 
