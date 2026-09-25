@@ -17,6 +17,17 @@ The project is designed as both an **educational resource** and a **portfolio-qu
 ### ▲ Vercel Deployment  
 https://isro-voyager.vercel.app/
 
+## 📸 Screenshots
+
+### 🏠 Homepage  
+![Homepage](screenshots/homepage.png)
+
+### 🌕 Chandrayaan  
+![Chandrayaan](screenshots/chandrayaan.png)
+
+### 🛰 Satellite Categories  
+![Categories](screenshots/satellites.png)
+
 ## 🎖️ Badges
 
 <p align="center">
@@ -94,16 +105,6 @@ Right-click → "Open with Live Server"
 
 The entire site runs directly in the browser — no backend required.
 
-## 📸 Screenshots
-
-### 🏠 Homepage  
-![Homepage](screenshots/homepage.png)
-
-### 🌕 Chandrayaan  
-![Chandrayaan](screenshots/chandrayaan.png)
-
-### 🛰 Satellite Categories  
-![Categories](screenshots/satellites.png)
 
 ## 🤝 Contributing
 
