@@ -960,7 +960,7 @@ body {
    SMALL PHONES
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
     .space-container {
         height: 1800px;
@@ -1153,7 +1153,7 @@ body {
     letter-spacing: 2px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
     .made-by {
         padding: 45px 18px 35px;
