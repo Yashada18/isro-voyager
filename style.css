@@ -1153,19 +1153,48 @@ body {
     letter-spacing: 2px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
     .made-by {
-        padding: 50px 20px 40px;
+        padding: 45px 18px 35px;
+    }
+
+    .made-label {
+        font-size: 7px;
+        letter-spacing: 2.5px;
+        margin-bottom: 10px;
+    }
+
+    .creator-name {
+        gap: 5px;
     }
 
     .creator-name h2 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .creator-astronaut {
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
+
+        animation: astronautFloat 3.5s ease-in-out infinite;
+    }
+
+    .made-tech {
+        margin-top: 10px;
+        font-size: 6px;
+        letter-spacing: 1.5px;
+    }
+}
+
+@keyframes astronautFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(3deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(-4deg);
     }
 
 }
